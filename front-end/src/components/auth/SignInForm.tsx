@@ -7,7 +7,7 @@ import { signInSchema, SignInFormData } from '@/lib/validation';
 import { FloatingLabelInput } from './FloatingLabelInput';
 
 interface SignInFormProps {
-  onSubmit: (data: SignInFormData) => void;
+  onSubmit: (data: SignInFormData) => Promise<void>;
 }
 
 export function SignInForm({ onSubmit }: SignInFormProps) {

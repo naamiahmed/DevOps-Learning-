@@ -7,7 +7,7 @@ import { signUpSchema, SignUpFormData } from '@/lib/validation';
 import { FloatingLabelInput } from './FloatingLabelInput';
 
 interface SignUpFormProps {
-  onSubmit: (data: SignUpFormData) => void;
+  onSubmit: (data: SignUpFormData) => Promise<void>;
 }
 
 export function SignUpForm({ onSubmit }: SignUpFormProps) {

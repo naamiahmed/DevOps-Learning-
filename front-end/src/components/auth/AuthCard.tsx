@@ -2,21 +2,34 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { SignInForm } from './SignInForm';
 import { SignUpForm } from './SignUpForm';
 import { SignInFormData, SignUpFormData } from '@/lib/validation';
+import { useAuth } from '@/lib/auth-context';
 
 export function AuthCard() {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const { signIn, signUp } = useAuth();
 
-  const handleSignIn = (data: SignInFormData) => {
-    console.log('Sign In Data:', data);
-    // Handle sign in logic here
+  const handleSignIn = async (data: SignInFormData) => {
+    setError(null);
+    const success = await signIn(data.email, data.password);
+    
+    if (success) {
+      router.push('/');
+    }
   };
 
-  const handleSignUp = (data: SignUpFormData) => {
-    console.log('Sign Up Data:', data);
-    // Handle sign up logic here
+  const handleSignUp = async (data: SignUpFormData) => {
+    setError(null);
+    const success = await signUp(data.email, data.password, data.confirmPassword);
+    
+    if (success) {
+      router.push('/');
+    }
   };
 
   const cardVariants = {
@@ -68,6 +81,17 @@ export function AuthCard() {
               Sign Up
             </motion.button>
           </div>
+
+          {/* Error Message */}
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-200 text-sm"
+            >
+              {error}
+            </motion.div>
+          )}
 
           {/* Form Container */}
           <div className="relative overflow-hidden">
