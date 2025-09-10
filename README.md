@@ -1,66 +1,88 @@
-# DevOps Learning Project 🚀  
+# DevOps Learning Documentary 📘
 
-This repository is a **hands-on DevOps learning project** where I practice setting up and managing a full-stack application using modern DevOps practices. It includes a **frontend (Next.js)**, **backend (NestJS)**, and a **MongoDB Atlas database**, all containerized with **Docker** and orchestrated via **docker-compose**.  
+## description: 
 
----
+  Welcome to my **DevOps Learning Journey**!  
+  This repository is not just code — it’s a **step-by-step diary** of how I’m learning DevOps by building a real-world full-stack project.  
+  Each day I document what I built, what commands I ran, the issues I faced, and how I solved them.  
+  My goal is to understand DevOps fundamentals deeply while practicing with **CI/CD, Docker, GitHub Actions, and Cloud Deployments**.
 
-## 📌 Tech Stack  
+## tech_stack:
+  - 🖥️ frontend: Next.js (TypeScript)
+  - ⚙️ backend: NestJS (TypeScript)
+  - 🗄️ database: MongoDB Atlas
+  - 🐳 containerization: Docker & Docker Compose
+  - 🔄 ci_cd: GitHub Actions
+  - 📦 monorepo: Both frontend and backend live inside the same repository
 
-### Frontend  
-- **Framework**: Next.js  
-- **Language**: TypeScript  
-- **Package Manager**: npm  
-- **Start Command**: `npm run dev`  
+## learning_journey:
+  - ### day: 1
+    title: "🟢 Frontend Setup (Next.js)"
+    tasks:
+      - Initialized the Next.js project inside `front-end/`
+      - Installed dependencies with `npm install`
+      - Verified the development server
+        command: npm run dev
+      - Successfully ran frontend at http://localhost:3000
+  - ### day: 2
+    title: "🟠 Backend Setup (NestJS + Basic Authentication)"
+    tasks:
+      - Created the NestJS backend inside `back-end/`
+      - Implemented basic authentication logic (login/register endpoints)
+      - Ran backend server
+        command: npm run start:dev
+      - Tested endpoints locally with Postman
+    issues:
+      - description: "Nested `.git` repository was automatically created inside backend"
+        impact: "Main repository did not track backend changes"
+        solution: "Removed the nested git"
+          command: rm -rf back-end/.git
+        outcome: "Both frontend and backend are now tracked in a single monorepo"
+  - ### day: 3
+    title: "🔵 MongoDB Integration"
+    tasks:
+      - Connected NestJS backend to MongoDB Atlas
+      - Created schemas/models for authentication
+      - Integrated backend API with frontend for sign-in/sign-up
+      - Installed MongoDB packages
+        command: npm install @nestjs/mongoose mongoose
+      - Added MongoDB Atlas connection string in `.env`
+  - ### day: 4
+    title: "🟣 Docker & CI/CD (GitHub Actions)"
+    tasks:
+      - Wrote Dockerfile for frontend and backend separately
+      - Created `docker-compose.yml` to run both services
+      - Built GitHub Actions pipelines
+        - Frontend pipeline runs on `front-end` branch
+        - Backend pipeline runs on `back-end` branch
+      - Learned branch-based CI/CD for independent deployments
+      - Build frontend container
+        command: docker build -t frontend-app ./front-end
+      - Build backend container
+        command: docker build -t backend-app ./back-end
+      - Run both with Docker Compose
+        command: docker-compose up --build
 
-### Backend  
-- **Framework**: NestJS  
-- **Language**: TypeScript  
-- **Database**: MongoDB Atlas  
-- **Start Command**: `npm run start:dev`  
+## repository_structure:
+  - 📂 front-end/: "Next.js app + Dockerfile"
+  - 📂 back-end/: "NestJS app + Dockerfile"
+  - 📄 docker-compose.yml: "Combines frontend + backend"
+  - ⚡ .github/workflows/: "GitHub Actions pipelines"
+  - 📝 README.yml: "DevOps Learning Documentary"
 
-### DevOps & Tools  
-- **Containerization**: Docker & Docker Compose  
-- **Version Control**: Git + GitHub  
-- **CI/CD**: GitHub Actions  
-- **Cloud DB**: MongoDB Atlas  
+## status:
+  completed:
+    - ✅ Day 1 – Frontend setup complete
+    - ✅ Day 2 – Backend setup + Auth logic
+    - ✅ Day 2 – Fixed nested git issue
+    - ✅ Day 3 – MongoDB Atlas integration
+    - ✅ Day 4 – Docker & CI/CD basics
+  upcoming:
+    - ☁️ Cloud deployment (AWS/Azure/GCP)
+    - ☸️ Kubernetes orchestration
 
----
+final_note: 
 
-## ⚙️ Project Workflow  
-
-The workflow of this project follows a **branch-based CI/CD setup**:  
-
-1. **Frontend Branch (`front-end`)**  
-   - Contains the **Next.js app** and its **Dockerfile**.  
-   - A dedicated **GitHub Actions pipeline** builds, tests, and deploys changes whenever code is pushed to this branch.  
-
-2. **Backend Branch (`back-end`)**  
-   - Contains the **NestJS app** and its **Dockerfile**.  
-   - A dedicated **GitHub Actions pipeline** builds, tests, and deploys changes whenever code is pushed to this branch.  
-
-3. **Main Branch (`main`)**  
-   - Serves as the **integration branch** for the whole project.  
-   - Contains the **docker-compose.yml**, combining both frontend and backend services.  
-   - Can be used for local full-stack development with:  
-     ```bash
-     docker-compose up --build
-     ```
-
----
-
-## 🔄 CI/CD Pipeline  
-
-The CI/CD pipelines are designed to mimic **real-world DevOps workflows**:  
-
-- **Continuous Integration (CI)**  
-  - Runs automatically on each push or pull request.  
-  - Lints and builds both frontend and backend code.  
-  - Ensures Docker images are built successfully.  
-
-- **Continuous Deployment (CD)**  
-  - Deploys frontend and backend separately when changes are merged into their respective branches (`front-end` or `back-end`).  
-  - Deployment targets can be extended later (e.g., AWS EC2, Azure, GCP, or Kubernetes).  
-
-
-## 🗂️ Repository Structure  
-
+  ✨ This repository is **not just code** — it’s my **daily DevOps learning diary**.  
+  It captures my **progress, issues, and solutions** step by step,  
+  making it similar to a **real-world DevOps project journey**.
