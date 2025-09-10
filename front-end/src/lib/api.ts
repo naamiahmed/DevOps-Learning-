@@ -1,6 +1,6 @@
 import { SignInFormData, SignUpFormData } from './validation';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 export interface ApiResponse<T> {
   data?: T;
@@ -12,7 +12,7 @@ export interface AuthResponse {
 }
 
 export interface UserProfile {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   createdAt: Date;

@@ -43,7 +43,7 @@ export function ProfileInfo() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <InfoCard label="User ID" value={user.id} />
+          <InfoCard label="User ID" value={user._id} />
           <InfoCard label="Username" value={user.email.split('@')[0]} />
           <InfoCard label="Email" value={user.email} />
           <InfoCard 
