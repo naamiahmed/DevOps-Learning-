@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  frontend:
+    build: ./front-end
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+
+  backend:
+    build: ./back-end
+    ports:
+      - "3001:3001"
+    environment:
+      MONGO_URI: "mongodb+srv://<user>:<pass>@cluster0.mongodb.net/<dbname>"
