@@ -1,0 +1,22 @@
+name: Backend Pipeline
+on:
+  push:
+    branches:
+      - back-end  # only runs when back-end branch is pushed
+
+jobs:
+  build-and-deploy-Backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Build Backend
+        working-directory: ./back-end
+        run: |
+          npm ci
+          npm run build
+          docker build -t my-backend .
+      # optional deploy steps

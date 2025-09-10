@@ -1,0 +1,27 @@
+# Use Node.js LTS
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Build the NestJS app
+RUN npm run build
+
+# Final image
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+# Copy build output and package.json
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+EXPOSE 3001
+
+# Start the NestJS app
+CMD ["node", "dist/main"]
