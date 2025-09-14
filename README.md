@@ -1,5 +1,7 @@
 # DevOps Learning Documentary 📘
 
+### Hosted URL : http://devops-learning-01.s3-website-us-west-2.amazonaws.com
+
 ## description: 
 
   Welcome to my **DevOps Learning Journey**!  
