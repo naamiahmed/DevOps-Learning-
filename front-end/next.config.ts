@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,   // optional but recommended
+  output: 'export',        // <-- enables static export
 };
 
 export default nextConfig;
